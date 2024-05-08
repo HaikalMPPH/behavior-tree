@@ -1,7 +1,7 @@
 #ifndef BEHAVIOR_TREE_H
 #define BEHAVIOR_TREE_H
 
-#include <src/ai/behavior.h>
+#include <src/ai/behavior.hpp>
 
 class BehaviorTree {
 private:

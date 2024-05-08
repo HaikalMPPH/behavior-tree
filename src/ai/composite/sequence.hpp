@@ -1,7 +1,7 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
-#include <src/ai/composite/composite.h>
+#include <src/ai/composite/composite.hpp>
 
 class Sequence : public Composite {
 protected:

@@ -1,10 +1,10 @@
 #ifndef BEHAVIOR_TREE_BUILDER_H
 #define BEHAVIOR_TREE_BUILDER_H
 
-#include <src/std_includes.h>
-#include <src/ai/composite/composite.h>
-#include <src/ai/leaf/action.h>
-#include <src/ai/ai.h>
+#include <src/std_includes.hpp>
+#include <src/ai/composite/composite.hpp>
+#include <src/ai/leaf/action.hpp>
+#include <src/ai/ai.hpp>
 
 class BehaviorTreeBuilder {
 private:

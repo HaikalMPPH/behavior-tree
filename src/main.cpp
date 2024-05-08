@@ -1,5 +1,5 @@
-#include <src/ai/ai.h>
-#include <src/std_includes.h>
+#include <src/ai/ai.hpp>
+#include <src/std_includes.hpp>
 
 BehaviorStatus say_hello() {
   std::cout << "Hello, World!" << std::endl;
@@ -14,8 +14,6 @@ int main() {
         ->add_action(say_hello)
         ->add_action(say_hello);
 
-  // don't run the main: this thing still cause memory leak. Just wan't
-  // to make sure it compiles.
   BehaviorTree* bt = btb->create_tree();
 
   bt->bt_update();

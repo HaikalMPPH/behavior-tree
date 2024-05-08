@@ -1,4 +1,4 @@
-#include <src/ai/composite/composite.h>
+#include <src/ai/composite/composite.hpp>
 
 Composite::Composite() 
     : _children {} 

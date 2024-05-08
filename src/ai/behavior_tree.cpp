@@ -1,4 +1,4 @@
-#include <src/ai/behavior_tree.h>
+#include <src/ai/behavior_tree.hpp>
 
 BehaviorTree::BehaviorTree() {}
 BehaviorTree::~BehaviorTree() {

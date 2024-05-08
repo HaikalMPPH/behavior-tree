@@ -1,4 +1,4 @@
-#include <src/ai/behavior_tree_builder.h>
+#include <src/ai/behavior_tree_builder.hpp>
 
 BehaviorTreeBuilder::BehaviorTreeBuilder() 
     : _bt {new BehaviorTree()} {

@@ -1,8 +1,8 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-#include <src/ai/behavior.h>
-#include <src/std_includes.h>
+#include <src/ai/behavior.hpp>
+#include <src/std_includes.hpp>
 
 class Action : public ABehavior {
 public:
