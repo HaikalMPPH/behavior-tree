@@ -13,6 +13,7 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::root(ABehavior* node) {
   return this;
 }
 
+// Add a composite node to child of a node
 BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
   if (_current->_can_have_child) {
     if (_current->_can_have_multi_child) {
@@ -37,6 +38,7 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
   return this;
 }
 
+// Add a action node to child of a node
 BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action::ActionFn fn) {
   // if the parent is either composite. or decorators (can have child).
   if (_current->_can_have_child) {
