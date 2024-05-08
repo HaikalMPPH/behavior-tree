@@ -16,9 +16,9 @@ void Composite::add_child(ABehavior* node) {
   //mark_next_free_id();
 }
 
-//ABehavior* Composite::get_child_at(unsigned int i) {
-//  return _children[i];
-//}
+ABehavior* Composite::get_child_at(unsigned int i) {
+  return _children[i];
+}
 
 ABehavior* Composite::get_active_child() {
   return _children[_free_id];

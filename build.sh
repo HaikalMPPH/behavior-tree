@@ -7,7 +7,7 @@ CC="clang++"
 STD="-std=c++17"
 MODE="-g"
 INCLUDES="-I."
-#LIB="-lraylib"
+LIB="-lraylib"
 SRC="src/*.cpp src/**/*.cpp src/**/**/*.cpp"
 
-$CC $STD -o $BIN_DIR$NAME $SRC $WARN $MODE $INCLUDES
+$CC $STD -o $BIN_DIR$NAME $SRC $WARN $MODE $INCLUDES $LIB

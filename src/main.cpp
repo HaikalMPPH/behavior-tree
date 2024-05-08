@@ -23,15 +23,14 @@ BehaviorStatus say_hello4() {
 }
 
 int main() {
+  std::srand(std::time(nullptr));
   BehaviorTreeBuilder* btb = new BehaviorTreeBuilder();
   btb
     ->root(new Repeat())
       ->composite(new Sequence())
-        ->composite(new Sequence())
+        ->composite(new Random())
           ->action(say_hello)
           ->action(say_hello2)
-          ->end()
-        ->composite(new Sequence())
           ->action(say_hello3)
           ->action(say_hello4);
 

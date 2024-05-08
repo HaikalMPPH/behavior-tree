@@ -30,7 +30,6 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
       static_cast<Composite*>(_current->get_parent())->mark_next_free_id();
     }
     else {
-      // TODO: Implementation for decorator.
       static_cast<Decorator*>(_current)->add_child(node);
       _current = static_cast<Decorator*>(_current)->get_child();
     }
@@ -45,10 +44,11 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action::ActionFn fn) {
     // if the parent is a composite (multiple child).
     if (_current->_can_have_multi_child) {
       static_cast<Composite*>(_current)->add_child(new Action(fn));
+      static_cast<Composite*>(_current)->mark_next_free_id();
     }
     // if the parent is a decorator.
     else {
-      // TODO: Implementation for decorators
+      static_cast<Decorator*>(_current)->add_child(new Action(fn));
     }
   }
 
