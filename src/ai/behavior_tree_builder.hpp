@@ -15,12 +15,12 @@ public:
   ~BehaviorTreeBuilder();
 
   // can be composites or decorators (root must be able to have child).
-  BehaviorTreeBuilder* add_root(ABehavior* node);
+  BehaviorTreeBuilder* root(ABehavior* node);
 
-  BehaviorTreeBuilder* add_sequence(Sequence* node);
+  BehaviorTreeBuilder* composite(Composite* node);
 
   // Actions and Conditions won't change _current to itself.
-  BehaviorTreeBuilder* add_action(Action::ActionFn fn);
+  BehaviorTreeBuilder* action(Action::ActionFn fn);
 
   BehaviorTreeBuilder* end();
 

@@ -6,14 +6,14 @@ BehaviorTreeBuilder::BehaviorTreeBuilder()
 
 BehaviorTreeBuilder::~BehaviorTreeBuilder() {}
 
-BehaviorTreeBuilder* BehaviorTreeBuilder::add_root(ABehavior* node) {
+BehaviorTreeBuilder* BehaviorTreeBuilder::root(ABehavior* node) {
   _bt->set_root(node);
   _bt->get_root()->set_parent(nullptr);
   _current = _bt->get_root();
   return this;
 }
 
-BehaviorTreeBuilder* BehaviorTreeBuilder::add_sequence(Sequence* node) {
+BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
   if (_current->_can_have_child) {
     if (_current->_can_have_multi_child) {
       static_cast<Composite*>(_current)->add_child(node);
@@ -37,7 +37,7 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::add_sequence(Sequence* node) {
   return this;
 }
 
-BehaviorTreeBuilder* BehaviorTreeBuilder::add_action(Action::ActionFn fn) {
+BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action::ActionFn fn) {
   // if the parent is either composite. or decorators (can have child).
   if (_current->_can_have_child) {
     // if the parent is a composite (multiple child).

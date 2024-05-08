@@ -11,14 +11,29 @@ BehaviorStatus say_hello2() {
   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   return BehaviorStatus::NodeSuccess;
 }
+BehaviorStatus say_hello3() {
+  std::cout << "Hello 3!" << std::endl;
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  return BehaviorStatus::NodeSuccess;
+}
+BehaviorStatus say_hello4() {
+  std::cout << "Hello 4!" << std::endl;
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  return BehaviorStatus::NodeSuccess;
+}
 
 int main() {
   BehaviorTreeBuilder* btb = new BehaviorTreeBuilder();
   btb
-    ->add_root(new Repeat())
-      ->add_sequence(new Sequence())
-        ->add_action(say_hello)
-        ->add_action(say_hello2);
+    ->root(new Repeat())
+      ->composite(new Sequence())
+        ->composite(new Sequence())
+          ->action(say_hello)
+          ->action(say_hello2)
+          ->end()
+        ->composite(new Sequence())
+          ->action(say_hello3)
+          ->action(say_hello4);
 
   BehaviorTree* bt = btb->create_tree();
 
