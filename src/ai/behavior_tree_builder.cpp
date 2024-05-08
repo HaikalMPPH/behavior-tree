@@ -30,6 +30,8 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::add_sequence(Sequence* node) {
     }
     else {
       // TODO: Implementation for decorator.
+      static_cast<Decorator*>(_current)->add_child(node);
+      _current = static_cast<Decorator*>(_current)->get_child();
     }
   }
   return this;
