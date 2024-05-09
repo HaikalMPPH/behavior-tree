@@ -35,7 +35,7 @@ int main() {
   BehaviorTreeBuilder* btb = new BehaviorTreeBuilder();
   btb
     ->root(new Sequence())
-      ->composite(new Sequence())
+      ->composite(new Random())
         ->action(say_hello)
         ->action(say_hello2)
         ->action(say_hello3)
