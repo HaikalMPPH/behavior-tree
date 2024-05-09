@@ -1,5 +1,8 @@
 #ifndef REPEAT_HPP
 #define REPEAT_HPP
+/////////////////////// !!! WARNING !!! ///////////////////////////////
+//                 DO NOT USE REPEAT IN A GAME LOOP.                 //
+///////////////////////////////////////////////////////////////////////
 
 #include <ai/decorator/decorator.hpp>
 
