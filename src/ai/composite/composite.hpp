@@ -1,8 +1,8 @@
 #ifndef COMPOSITE_H
 #define COMPOSITE_H
 
-#include <src/std_includes.hpp>
-#include <src/ai/behavior.hpp>
+#include <std_includes.hpp>
+#include <ai/behavior.hpp>
 
 class Composite : public ABehavior {
 protected:

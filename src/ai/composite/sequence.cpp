@@ -1,4 +1,4 @@
-#include <src/ai/composite/sequence.hpp>
+#include <ai/composite/sequence.hpp>
 
 Sequence::Sequence() {}
 Sequence::~Sequence() {}

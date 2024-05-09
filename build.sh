@@ -6,7 +6,7 @@ WARN="-Wall"
 CC="clang++"
 STD="-std=c++17"
 MODE="-g"
-INCLUDES="-I."
+INCLUDES="-Isrc"
 LIB="-lraylib"
 SRC="src/*.cpp src/**/*.cpp src/**/**/*.cpp"
 

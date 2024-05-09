@@ -1,4 +1,4 @@
-#include <src/ai/decorator/decorator.hpp>
+#include <ai/decorator/decorator.hpp>
 
 Decorator::Decorator() 
     : _child {nullptr} {

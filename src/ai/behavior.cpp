@@ -1,4 +1,4 @@
-#include <src/ai/behavior.hpp>
+#include <ai/behavior.hpp>
 
 ABehavior::ABehavior() 
     : _status {BehaviorStatus::NodeInvalid} 

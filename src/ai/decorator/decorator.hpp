@@ -1,7 +1,7 @@
 #ifndef DECORATOR_HPP
 #define DECORATOR_HPP
 
-#include <src/ai/behavior.hpp>
+#include <ai/behavior.hpp>
 
 class Decorator : public ABehavior {
 protected:

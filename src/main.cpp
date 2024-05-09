@@ -1,5 +1,5 @@
-#include <src/ai/ai.hpp>
-#include <src/std_includes.hpp>
+#include <ai/ai.hpp>
+#include <std_includes.hpp>
 
 BehaviorStatus say_hello() {
   std::cout << "Hello 1!" << std::endl;
