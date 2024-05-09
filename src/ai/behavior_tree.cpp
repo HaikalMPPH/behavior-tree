@@ -1,6 +1,7 @@
 #include <ai/behavior_tree.hpp>
 
-BehaviorTree::BehaviorTree() {}
+BehaviorTree::BehaviorTree() 
+    : _frame {0} {}
 BehaviorTree::~BehaviorTree() {
   dealloc_root();
 }
@@ -16,12 +17,11 @@ void BehaviorTree::bt_update() {
 }
 
 void BehaviorTree::bt_update(float tick_rate) {
-  float frame = 0;
-  if (frame >= tick_rate) {
+  if (_frame >= tick_rate) {
     _root->tick();
-    frame = 0;
+    _frame = 0;
   }
-  frame++;
+  _frame++;
 }
 
 void BehaviorTree::dealloc_root() {

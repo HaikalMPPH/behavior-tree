@@ -6,6 +6,7 @@
 class BehaviorTree {
 private:
   ABehavior* _root;
+  float _frame;
 public:
   BehaviorTree();
   ~BehaviorTree();

@@ -28,7 +28,7 @@ int main() {
   std::srand(std::time(nullptr));
   BehaviorTreeBuilder* btb = new BehaviorTreeBuilder();
   btb
-    ->root(new Repeat())
+    ->root(new Sequence())
       ->composite(new Sequence())
         ->composite(new Random())
           ->action(say_hello)
@@ -38,7 +38,9 @@ int main() {
 
   BehaviorTree* bt = btb->create_tree();
 
-  bt->bt_update();
+  while (true) {
+    bt->bt_update(5.0f);
+  }
 
   delete btb;
   delete bt;
