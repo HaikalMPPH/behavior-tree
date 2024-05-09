@@ -5,14 +5,17 @@ Selector::~Selector() {}
 
 BehaviorStatus Selector::update() {
   if (!_children.empty()) {
-    for (ABehavior* child : _children) {
-      _status = child->tick();
+    for (;;) {
+      _status = (*_current_child)->tick();
 
-      if (_status == BehaviorStatus::NodeSuccess) {
+      if (_status != BehaviorStatus::NodeFailed) {
         return _status;
+      }
+
+      if (++_current_child == _children.end()) {
+        return BehaviorStatus::NodeFailed;
       }
     }
   }
-
-  return _status;
+  return BehaviorStatus::NodeInvalid;
 }

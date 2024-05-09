@@ -28,6 +28,10 @@ void Composite::mark_next_free_id() {
   _free_id++;
 }
 
+void Composite::on_init() {
+  _current_child = _children.begin();
+}
+
 void Composite::dealloc_child() {
   if (!_children.empty()) {
     for (ABehavior* child : _children) {

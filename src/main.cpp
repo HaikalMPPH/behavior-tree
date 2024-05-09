@@ -1,6 +1,12 @@
 #include <ai/ai.hpp>
 #include <std_includes.hpp>
 
+BehaviorStatus always_running() {
+  std::cout << "RUNNING!!!" << std::endl;
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  return BehaviorStatus::NodeRunning;
+}
+
 int main() {
 ///////////////// CUSTON ACTION LEAF //////////////////////////////////
   Action* say_hello = new Action([](){
@@ -14,7 +20,7 @@ int main() {
     return BehaviorStatus::NodeSuccess;
   });
   Action* say_hello3 = new Action([](){
-    std::cout << "Hello 3!" << std::endl;
+    std::cout << "Hello 3" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     return BehaviorStatus::NodeSuccess;
   });
@@ -30,11 +36,11 @@ int main() {
   btb
     ->root(new Sequence())
       ->composite(new Sequence())
-        ->composite(new Random())
-          ->action(say_hello)
-          ->action(say_hello2)
-          ->action(say_hello3)
-          ->action(say_hello4);
+        ->action(say_hello)
+        ->action(say_hello2)
+        ->action(say_hello3)
+        ->action(say_hello4)
+        ->action(new Action(always_running));
 
   BehaviorTree* bt = btb->create_tree();
 

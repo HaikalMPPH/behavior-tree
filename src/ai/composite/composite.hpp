@@ -8,6 +8,7 @@ class Composite : public ABehavior {
 protected:
   using ChildVec = std::vector<ABehavior*>;
   ChildVec _children;
+  ChildVec::iterator _current_child;
 
   // The next assignable child index. It's also the number of child it 
   // have.
@@ -22,6 +23,7 @@ public:
   ABehavior* get_active_child();
   void mark_next_free_id();
   void dealloc_child();
+  void on_init() override;
 };
 
 #endif
