@@ -38,17 +38,17 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
 }
 
 // Add a action node to child of a node
-BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action::ActionFn fn) {
+BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action* node) {
   // if the parent is either composite. or decorators (can have child).
   if (_current->_can_have_child) {
     // if the parent is a composite (multiple child).
     if (_current->_can_have_multi_child) {
-      static_cast<Composite*>(_current)->add_child(new Action(fn));
+      static_cast<Composite*>(_current)->add_child(node);
       static_cast<Composite*>(_current)->mark_next_free_id();
     }
     // if the parent is a decorator.
     else {
-      static_cast<Decorator*>(_current)->add_child(new Action(fn));
+      static_cast<Decorator*>(_current)->add_child(node);
     }
   }
 

@@ -20,7 +20,7 @@ public:
   BehaviorTreeBuilder* composite(Composite* node);
 
   // Actions and Conditions won't change _current to itself.
-  BehaviorTreeBuilder* action(Action::ActionFn fn);
+  BehaviorTreeBuilder* action(Action* node);
 
   BehaviorTreeBuilder* end();
 

@@ -1,28 +1,30 @@
 #include <ai/ai.hpp>
 #include <std_includes.hpp>
 
-BehaviorStatus say_hello() {
-  std::cout << "Hello 1!" << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  return BehaviorStatus::NodeSuccess;
-}
-BehaviorStatus say_hello2() {
-  std::cout << "Hello 2!" << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  return BehaviorStatus::NodeSuccess;
-}
-BehaviorStatus say_hello3() {
-  std::cout << "Hello 3!" << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  return BehaviorStatus::NodeSuccess;
-}
-BehaviorStatus say_hello4() {
-  std::cout << "Hello 4!" << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  return BehaviorStatus::NodeSuccess;
-}
-
 int main() {
+///////////////// CUSTON ACTION LEAF //////////////////////////////////
+  Action* say_hello = new Action([](){
+    std::cout << "Hello 1!" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    return BehaviorStatus::NodeSuccess;
+  });
+  Action* say_hello2 = new Action([](){
+    std::cout << "Hello 2!" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    return BehaviorStatus::NodeSuccess;
+  });
+  Action* say_hello3 = new Action([](){
+    std::cout << "Hello 3!" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    return BehaviorStatus::NodeSuccess;
+  });
+  Action* say_hello4 = new Action([](){
+    std::cout << "Hello 4!" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    return BehaviorStatus::NodeSuccess;
+  });
+///////////////////////////////////////////////////////////////////////
+
   std::srand(std::time(nullptr));
   BehaviorTreeBuilder* btb = new BehaviorTreeBuilder();
   btb
