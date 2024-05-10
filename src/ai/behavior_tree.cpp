@@ -20,6 +20,7 @@ void BehaviorTree::bt_update(float tick_rate) {
   if (_frame >= tick_rate) {
     _root->tick();
     _frame = 0;
+    return;
   }
   _frame++;
 }

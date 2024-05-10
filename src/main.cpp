@@ -38,9 +38,10 @@ int main() {
       ->composite(new Random())
         ->action(say_hello)
         ->action(say_hello2)
+        ->end()
+      ->composite(new Sequence())
         ->action(say_hello3)
-        ->action(say_hello4)
-        ->action(new Action(always_running));
+        ->action(say_hello4);
 
   BehaviorTree* bt = btb->create_tree();
 
