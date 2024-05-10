@@ -18,9 +18,11 @@ public:
   BehaviorTreeBuilder* root(ABehavior* node);
 
   BehaviorTreeBuilder* composite(Composite* node);
+  BehaviorTreeBuilder* decorator(Decorator* node);
 
   // Actions and Conditions won't change _current to itself.
   BehaviorTreeBuilder* action(Action* node);
+  BehaviorTreeBuilder* condition(Condition* node);
 
   BehaviorTreeBuilder* end();
 

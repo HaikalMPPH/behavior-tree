@@ -1,4 +1,4 @@
-#include <ai/ai.hpp>
+#include "ai/ai.hpp"
 #include <std_includes.hpp>
 
 BehaviorStatus always_running() {
@@ -29,18 +29,23 @@ int main() {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     return BehaviorStatus::NodeSuccess;
   });
+
+  Condition* always_false = new Condition([](){
+    return false;
+  });
 ///////////////////////////////////////////////////////////////////////
 
   std::srand(std::time(nullptr));
   BehaviorTreeBuilder* btb = new BehaviorTreeBuilder();
   btb
     ->root(new Sequence())
-      ->composite(new Random())
+      ->composite(new Sequence())
         ->action(say_hello)
         ->action(say_hello2)
-        ->end()
-      ->composite(new Sequence())
-        ->action(say_hello3)
+        ->condition(always_false)
+        ->decorator(new Invert())
+          ->action(say_hello3)
+          ->end()
         ->action(say_hello4);
 
   BehaviorTree* bt = btb->create_tree();

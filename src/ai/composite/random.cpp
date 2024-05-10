@@ -1,4 +1,4 @@
-#include <ai/composite/random.hpp>
+#include "random.hpp"
 
 Random::Random() {}
 

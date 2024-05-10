@@ -1,4 +1,4 @@
-#include <ai/behavior_tree.hpp>
+#include "behavior_tree.hpp"
 
 BehaviorTree::BehaviorTree() 
     : _frame {0} {}
@@ -20,7 +20,6 @@ void BehaviorTree::bt_update(float tick_rate) {
   if (_frame >= tick_rate) {
     _root->tick();
     _frame = 0;
-    return;
   }
   _frame++;
 }

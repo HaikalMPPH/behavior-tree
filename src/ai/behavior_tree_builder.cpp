@@ -37,6 +37,24 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
   return this;
 }
 
+// Add a decorator node to child of a node
+BehaviorTreeBuilder* BehaviorTreeBuilder::decorator(Decorator* node) {
+  if (_current->_can_have_child) {
+    if (_current->_can_have_multi_child) {
+      static_cast<Composite*>(_current)->add_child(node);
+
+      _current = static_cast<Composite*>(_current)->get_active_child();
+
+      static_cast<Composite*>(_current->get_parent())->mark_next_free_id();
+    }
+    else {
+      static_cast<Decorator*>(_current)->add_child(node);
+      _current = static_cast<Decorator*>(_current)->get_child();
+    }
+  }
+  return this;
+}
+
 // Add a action node to child of a node
 BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action* node) {
   // if the parent is either composite. or decorators (can have child).
@@ -51,8 +69,19 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action* node) {
       static_cast<Decorator*>(_current)->add_child(node);
     }
   }
-
-
+  return this;
+}
+// Add a condition node to child of a node
+BehaviorTreeBuilder* BehaviorTreeBuilder::condition(Condition* node) {
+  if (_current->_can_have_child) {
+    if (_current->_can_have_multi_child) {
+      static_cast<Composite*>(_current)->add_child(node);
+      static_cast<Composite*>(_current)->mark_next_free_id();
+    }
+    else {
+      static_cast<Decorator*>(_current)->add_child(node);
+    }
+  }
   return this;
 }
 

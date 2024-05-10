@@ -4,7 +4,7 @@
 //                 DO NOT USE REPEAT IN A GAME LOOP.                 //
 ///////////////////////////////////////////////////////////////////////
 
-#include <ai/decorator/decorator.hpp>
+#include "decorator.hpp"
 
 class Repeat : public Decorator {
 protected:
