@@ -50,11 +50,11 @@ int main() {
 
   BehaviorTree* bt = btb->create_tree();
 
-  while (true) {
-    bt->bt_update(5.0f);
-  }
+  //while (true) {
+   // bt->bt_update(5.0f);
+  //}
 
-  delete btb;
+  //delete btb;
   delete bt;
   return 0;
 }

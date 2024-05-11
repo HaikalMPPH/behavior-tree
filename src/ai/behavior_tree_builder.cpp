@@ -95,5 +95,6 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::end() {
 }
 
 BehaviorTree* BehaviorTreeBuilder::create_tree() {
+  delete this;
   return _bt;
 }
