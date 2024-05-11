@@ -12,6 +12,7 @@ Decorator::~Decorator() {
 
 void Decorator::dealloc_child() {
   delete _child;
+  _child = nullptr;
 }
 
 void Decorator::add_child(ABehavior* node) {

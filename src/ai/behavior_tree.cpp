@@ -26,4 +26,5 @@ void BehaviorTree::bt_update(float tick_rate) {
 
 void BehaviorTree::dealloc_root() {
   delete _root;
+  _root = nullptr;
 }

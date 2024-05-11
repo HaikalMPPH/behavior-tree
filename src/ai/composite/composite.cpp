@@ -36,6 +36,7 @@ void Composite::dealloc_child() {
   if (!_children.empty()) {
     for (ABehavior* child : _children) {
       delete child;
+      child = nullptr;
     }
   }
 }
