@@ -8,7 +8,7 @@ protected:
 public:
   Selector();
   ~Selector();
-  BehaviorStatus update() override;
+  BehaviorStatus Update() override;
 };
 
 #endif

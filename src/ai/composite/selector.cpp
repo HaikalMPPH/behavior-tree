@@ -3,16 +3,16 @@
 Selector::Selector() {}
 Selector::~Selector() {}
 
-BehaviorStatus Selector::update() {
+BehaviorStatus Selector::Update() {
   if (!_children.empty()) {
     for (;;) {
-      _status = (*_current_child)->tick();
+      _status = (*_currentChild)->Tick();
 
       if (_status != BehaviorStatus::NodeFailed) {
         return _status;
       }
 
-      if (++_current_child == _children.end()) {
+      if (++_currentChild == _children.end()) {
         return BehaviorStatus::NodeFailed;
       }
     }

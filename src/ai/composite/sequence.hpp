@@ -8,7 +8,7 @@ protected:
 public:
   Sequence();
   ~Sequence();
-  BehaviorStatus update() override;
+  BehaviorStatus Update() override;
 };
 
 #endif

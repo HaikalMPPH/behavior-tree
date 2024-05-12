@@ -14,19 +14,19 @@ public:
   BehaviorTreeBuilder();
   ~BehaviorTreeBuilder();
 
-  // can be composites or decorators (root must be able to have child).
-  BehaviorTreeBuilder* root(ABehavior* node);
+  // can be composites or decorators (Root must be able to have child).
+  BehaviorTreeBuilder* AddRoot(ABehavior* node);
 
-  BehaviorTreeBuilder* composite(Composite* node);
-  BehaviorTreeBuilder* decorator(Decorator* node);
+  BehaviorTreeBuilder* AddComposite(Composite* node);
+  BehaviorTreeBuilder* AddDecorator(Decorator* node);
 
   // Actions and Conditions won't change _current to itself.
-  BehaviorTreeBuilder* action(Action* node);
-  BehaviorTreeBuilder* condition(Condition* node);
+  BehaviorTreeBuilder* AddAction(Action* node);
+  BehaviorTreeBuilder* AddCondition(Condition* node);
 
-  BehaviorTreeBuilder* end();
+  BehaviorTreeBuilder* End();
 
-  BehaviorTree* create_tree();
+  BehaviorTree* CreateTree();
 };
 
 

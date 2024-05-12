@@ -4,8 +4,8 @@ Invert::Invert() {}
 Invert::~Invert() {}
 
 BehaviorStatus
-Invert::update() {
-  _status = _child->tick();
+Invert::Update() {
+  _status = _child->Tick();
   if (_status == BehaviorStatus::NodeSuccess) {
     return BehaviorStatus::NodeFailed;
   }

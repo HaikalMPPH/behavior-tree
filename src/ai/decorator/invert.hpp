@@ -9,7 +9,7 @@ protected:
 public:
   Invert();
   ~Invert();
-  BehaviorStatus update() override;
+  BehaviorStatus Update() override;
 };
 
 #endif

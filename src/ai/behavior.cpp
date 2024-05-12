@@ -3,31 +3,31 @@
 ABehavior::ABehavior() 
     : _status {BehaviorStatus::NodeInvalid} 
     // By default can't have a child
-    , _can_have_child {false} 
-    , _can_have_multi_child {_can_have_child} {
+    , _canHaveChild {false} 
+    , _canHaveMultiChild {_canHaveChild} {
 }
 
 ABehavior::~ABehavior() {}
 
-BehaviorStatus ABehavior::tick() {
+BehaviorStatus ABehavior::Tick() {
   if (_status != BehaviorStatus::NodeRunning) {
-    on_init();
+    OnInit();
   }
 
-  _status = update();
+  _status = Update();
 
   if (_status != BehaviorStatus::NodeRunning) {
-    on_terminate(_status);
+    OnTerminate(_status);
   }
 
   return _status;
 }
 
-void ABehavior::set_parent(ABehavior* node) {
+void ABehavior::SetParent(ABehavior* node) {
   _parent = node;
 }
 
-ABehavior* ABehavior::get_parent() {
+ABehavior* ABehavior::GetParent() {
   return _parent;
 }
 

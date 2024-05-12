@@ -1,13 +1,13 @@
 #include "condition.hpp"
 
-Condition::Condition(ConditionFn condition_fn)
-    : _condition_fn {condition_fn} {}
+Condition::Condition(ConditionFn conditionFn)
+    : _conditionFn {conditionFn} {}
 
 Condition::~Condition() {}
 
 BehaviorStatus
-Condition::update() {
-  bool condition = _condition_fn();
+Condition::Update() {
+  bool condition = _conditionFn();
   if (condition) {
     _status = BehaviorStatus::NodeSuccess;
   }

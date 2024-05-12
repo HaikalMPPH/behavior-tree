@@ -4,10 +4,10 @@ Random::Random() {}
 
 Random::~Random() {}
 
-BehaviorStatus Random::update() {
+BehaviorStatus Random::Update() {
   if (!_children.empty()) {
     for (;;) {
-      _status = get_child_at(std::rand() % _free_id)->tick();
+      _status = GetChildAt(std::rand() % _freeId)->Tick();
       return _status;
     }
   }

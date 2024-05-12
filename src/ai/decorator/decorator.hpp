@@ -9,9 +9,9 @@ protected:
 public:
   Decorator();
   virtual ~Decorator();
-  void add_child(ABehavior* node);
-  ABehavior* get_child();
-  void dealloc_child();
+  void AddChild(ABehavior* node);
+  ABehavior* GetChild();
+  void DeallocChild();
 };
 
 #endif

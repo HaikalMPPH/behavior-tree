@@ -1,30 +1,32 @@
 #include "behavior_tree.hpp"
 
 BehaviorTree::BehaviorTree() 
-    : _frame {0} {}
+    : _frame {0} 
+{}
+
 BehaviorTree::~BehaviorTree() {
-  dealloc_root();
+  DeallocRoot();
 }
-void BehaviorTree::set_root(ABehavior* node) {
+void BehaviorTree::SetRoot(ABehavior* node) {
   _root = node;
 }
-ABehavior* BehaviorTree::get_root() {
+ABehavior* BehaviorTree::GetRoot() {
   return _root;
 }
 
-void BehaviorTree::bt_update() {
-  _root->tick();
+void BehaviorTree::BTUpdate() {
+  _root->Tick();
 }
 
-void BehaviorTree::bt_update(float tick_rate) {
-  if (_frame >= tick_rate) {
-    _root->tick();
+void BehaviorTree::BTUpdate(uint8_t tickRate) {
+  if (_frame >= tickRate) {
+    _root->Tick();
     _frame = 0;
   }
   _frame++;
 }
 
-void BehaviorTree::dealloc_root() {
+void BehaviorTree::DeallocRoot() {
   delete _root;
   _root = nullptr;
 }

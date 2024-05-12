@@ -6,7 +6,6 @@
 #include "composite/selector.hpp"
 #include "composite/random.hpp"
 #include "decorator/decorator.hpp"
-#include "decorator/repeat.hpp"
 #include "decorator/invert.hpp"
 #include "leaf/action.hpp"
 #include "leaf/condition.hpp"

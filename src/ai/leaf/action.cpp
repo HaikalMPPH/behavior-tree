@@ -13,15 +13,15 @@
 //      return BehaviorStatus::NodeRunning;
 //    });
 
-Action::Action(ActionFn action_fn) 
-    : _action_fn {action_fn} {
-  _can_have_child = false;
+Action::Action(ActionFn actionFn) 
+    : _actionFn {actionFn} {
+  _canHaveChild = false;
 }
 
 Action::~Action() {}
 
-BehaviorStatus Action::update() {
-  _status = _action_fn();
+BehaviorStatus Action::Update() {
+  _status = _actionFn();
 
   return _status;
 }

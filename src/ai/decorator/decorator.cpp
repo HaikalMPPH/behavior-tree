@@ -2,24 +2,24 @@
 
 Decorator::Decorator() 
     : _child {nullptr} {
-  _can_have_child = true;
-  _can_have_multi_child = false;
+  _canHaveChild = true;
+  _canHaveMultiChild = false;
 }
 
 Decorator::~Decorator() {
-  dealloc_child();
+  DeallocChild();
 }
 
-void Decorator::dealloc_child() {
+void Decorator::DeallocChild() {
   delete _child;
   _child = nullptr;
 }
 
-void Decorator::add_child(ABehavior* node) {
+void Decorator::AddChild(ABehavior* node) {
   _child = node;
-  _child->set_parent(this);
+  _child->SetParent(this);
 }
 
-ABehavior* Decorator::get_child() {
+ABehavior* Decorator::GetChild() {
   return _child;
 }

@@ -1,19 +1,19 @@
 #ifndef CONDITION_HPP
 #define CONDITION_HPP
 
-#include "../behavior.hpp"
-#include "../../std_includes.hpp"
+#include "ai/behavior.hpp"
+#include "std_includes.hpp"
 
 class Condition : public ABehavior {
 public:
   using ConditionFn = std::function<bool()>;
 protected:
-  ConditionFn _condition_fn;
+  ConditionFn _conditionFn;
 public:
-  Condition(ConditionFn condition_fn);
+  Condition(ConditionFn conditionFn);
   ~Condition();
 
-  BehaviorStatus update() override;
+  BehaviorStatus Update() override;
 
 };
 

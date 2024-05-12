@@ -6,80 +6,77 @@ BehaviorTreeBuilder::BehaviorTreeBuilder()
 
 BehaviorTreeBuilder::~BehaviorTreeBuilder() {}
 
-BehaviorTreeBuilder* BehaviorTreeBuilder::root(ABehavior* node) {
-  _bt->set_root(node);
-  _bt->get_root()->set_parent(nullptr);
-  _current = _bt->get_root();
+BehaviorTreeBuilder* BehaviorTreeBuilder::AddRoot(ABehavior* node) {
+  _bt->SetRoot(node);
+  _bt->GetRoot()->SetParent(nullptr);
+  _current = _bt->GetRoot();
   return this;
 }
 
-// Add a composite node to child of a node
-BehaviorTreeBuilder* BehaviorTreeBuilder::composite(Composite* node) {
-  if (_current->_can_have_child) {
-    if (_current->_can_have_multi_child) {
-      static_cast<Composite*>(_current)->add_child(node);
+// Add a Composite node to child of a node
+BehaviorTreeBuilder* BehaviorTreeBuilder::AddComposite(Composite* node) {
+  if (_current->_canHaveChild) {
+    if (_current->_canHaveMultiChild) {
+      static_cast<Composite*>(_current)->AddChild(node);
 
       // _current is now pointing to at it's newly added child.
-      //_current = 
-      //  static_cast<Sequence*>(_current)
-      //  ->get_child_at(_current->_free_id);
-      _current = static_cast<Composite*>(_current)->get_active_child();
+      _current = static_cast<Composite*>(_current)->GetActiveChild();
 
       // mark the vec index of _current parent index of the vector 
       // as "filled" so it wont reassign to this index.
-      static_cast<Composite*>(_current->get_parent())->mark_next_free_id();
+      static_cast<Composite*>(_current->GetParent())->MarkNextFreeId();
     }
     else {
-      static_cast<Decorator*>(_current)->add_child(node);
-      _current = static_cast<Decorator*>(_current)->get_child();
+      static_cast<Decorator*>(_current)->AddChild(node);
+      _current = static_cast<Decorator*>(_current)->GetChild();
     }
   }
   return this;
 }
 
-// Add a decorator node to child of a node
-BehaviorTreeBuilder* BehaviorTreeBuilder::decorator(Decorator* node) {
-  if (_current->_can_have_child) {
-    if (_current->_can_have_multi_child) {
-      static_cast<Composite*>(_current)->add_child(node);
+// Add a Decorator node to child of a node
+BehaviorTreeBuilder* BehaviorTreeBuilder::AddDecorator(Decorator* node) {
+  if (_current->_canHaveChild) {
+    if (_current->_canHaveMultiChild) {
+      static_cast<Composite*>(_current)->AddChild(node);
 
-      _current = static_cast<Composite*>(_current)->get_active_child();
+      _current = static_cast<Composite*>(_current)->GetActiveChild();
 
-      static_cast<Composite*>(_current->get_parent())->mark_next_free_id();
+      static_cast<Composite*>(_current->GetParent())->MarkNextFreeId();
     }
     else {
-      static_cast<Decorator*>(_current)->add_child(node);
-      _current = static_cast<Decorator*>(_current)->get_child();
+      static_cast<Decorator*>(_current)->AddChild(node);
+      _current = static_cast<Decorator*>(_current)->GetChild();
     }
   }
   return this;
 }
 
-// Add a action node to child of a node
-BehaviorTreeBuilder* BehaviorTreeBuilder::action(Action* node) {
-  // if the parent is either composite. or decorators (can have child).
-  if (_current->_can_have_child) {
-    // if the parent is a composite (multiple child).
-    if (_current->_can_have_multi_child) {
-      static_cast<Composite*>(_current)->add_child(node);
-      static_cast<Composite*>(_current)->mark_next_free_id();
+// Add a Action node to child of a node
+BehaviorTreeBuilder* BehaviorTreeBuilder::AddAction(Action* node) {
+  // if the parent is either AddComposite. or decorators (can have child).
+  if (_current->_canHaveChild) {
+    // if the parent is a AddComposite (multiple child).
+    if (_current->_canHaveMultiChild) {
+      static_cast<Composite*>(_current)->AddChild(node);
+      static_cast<Composite*>(_current)->MarkNextFreeId();
     }
-    // if the parent is a decorator.
+    // if the parent is a AddDecorator.
     else {
-      static_cast<Decorator*>(_current)->add_child(node);
+      static_cast<Decorator*>(_current)->AddChild(node);
     }
   }
   return this;
 }
-// Add a condition node to child of a node
-BehaviorTreeBuilder* BehaviorTreeBuilder::condition(Condition* node) {
-  if (_current->_can_have_child) {
-    if (_current->_can_have_multi_child) {
-      static_cast<Composite*>(_current)->add_child(node);
-      static_cast<Composite*>(_current)->mark_next_free_id();
+// Add a Condition node to child of a node
+BehaviorTreeBuilder* BehaviorTreeBuilder::AddCondition(Condition* node) {
+  if (_current->_canHaveChild) {
+    if (_current->_canHaveMultiChild) {
+      static_cast<Composite*>(_current)->AddChild(node);
+      static_cast<Composite*>(_current)->MarkNextFreeId();
     }
     else {
-      static_cast<Decorator*>(_current)->add_child(node);
+      static_cast<Decorator*>(_current)->AddChild(node);
     }
   }
   return this;
@@ -87,14 +84,13 @@ BehaviorTreeBuilder* BehaviorTreeBuilder::condition(Condition* node) {
 
 
 // return to the previous node (it's parent).
-BehaviorTreeBuilder* BehaviorTreeBuilder::end() {
-  if (_current->get_parent() != nullptr) {
-    _current = _current->get_parent();
+BehaviorTreeBuilder* BehaviorTreeBuilder::End() {
+  if (_current->GetParent() != nullptr) {
+    _current = _current->GetParent();
   }
   return this;
 }
 
-BehaviorTree* BehaviorTreeBuilder::create_tree() {
-  delete this;
+BehaviorTree* BehaviorTreeBuilder::CreateTree() {
   return _bt;
 }

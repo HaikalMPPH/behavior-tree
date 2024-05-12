@@ -9,7 +9,7 @@ protected:
 public:
   Random();
   ~Random();
-  BehaviorStatus update() override;
+  BehaviorStatus Update() override;
 };
 
 #endif

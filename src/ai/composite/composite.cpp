@@ -2,37 +2,37 @@
 
 Composite::Composite() 
     : _children {} 
-    , _free_id {0} {
-  _can_have_child = _can_have_multi_child = true;
+    , _freeId {0} {
+  _canHaveChild = _canHaveMultiChild = true;
 }
 
 Composite::~Composite() {
-  dealloc_child();
+  DeallocChild();
 }
 
-void Composite::add_child(ABehavior* node) {
+void Composite::AddChild(ABehavior* node) {
   _children.push_back(node);
-  get_active_child()->set_parent(this);
-  //mark_next_free_id();
+  GetActiveChild()->SetParent(this);
+  //MarkNextFreeId();
 }
 
-ABehavior* Composite::get_child_at(unsigned int i) {
+ABehavior* Composite::GetChildAt(unsigned int i) {
   return _children[i];
 }
 
-ABehavior* Composite::get_active_child() {
-  return _children[_free_id];
+ABehavior* Composite::GetActiveChild() {
+  return _children[_freeId];
 }
 
-void Composite::mark_next_free_id() {
-  _free_id++;
+void Composite::MarkNextFreeId() {
+  _freeId++;
 }
 
-void Composite::on_init() {
-  _current_child = _children.begin();
+void Composite::OnInit() {
+  _currentChild = _children.begin();
 }
 
-void Composite::dealloc_child() {
+void Composite::DeallocChild() {
   if (!_children.empty()) {
     for (ABehavior* child : _children) {
       delete child;
